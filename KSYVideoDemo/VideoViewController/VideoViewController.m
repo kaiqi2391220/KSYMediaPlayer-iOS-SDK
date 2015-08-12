@@ -62,7 +62,7 @@
 //    http://videodemo.kssws.ks-cdn.com/h265-h264/h265.720.750k.mp4
     hlsField = [[UITextField alloc] initWithFrame:CGRectMake(10, size.height / 2 - 30, size.width - 80, 30)];
     hlsField.placeholder = @"HLS直播";
-    hlsField.text = @"http://videodemo.kssws.ks-cdn.com/h265-h264/h264.1080.2m.mp4";//@"http://maichang.kssws.ks-cdn.com/upload20150716161913.mp4";//@"http://192.168.135.27/h265.1080p.20Min.1M.mp4";//@"http://115.231.96.121:8080/hls/test_ts/index.m3u8"; // **** 需WI-FI：123
+    hlsField.text = @"http://maichang.kssws.ks-cdn.com/test4b.mov";//@"http://videodemo.kssws.ks-cdn.com/h265-h264/h264.1080.2m.mp4";//@"http://maichang.kssws.ks-cdn.com/upload20150716161913.mp4";//@"http://192.168.135.27/h265.1080p.20Min.1M.mp4";//@"http://115.231.96.121:8080/hls/test_ts/index.m3u8"; // **** 需WI-FI：123
     [demoView addSubview:hlsField];
     UIButton *hlsBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [hlsBtn setTitle:@"播放" forState:UIControlStateNormal];
@@ -157,9 +157,18 @@
 //    _videoUrl = [NSURL URLWithString:[[NSBundle mainBundle] pathForResource:@"h264.1080.2m" ofType:@"mp4"]];
 //    _videoUrl = [NSURL URLWithString:[[NSBundle mainBundle] pathForResource:@"h264.360.500k" ofType:@"mp4"]];
 //    _videoUrl = [NSURL URLWithString:[[NSBundle mainBundle] pathForResource:@"h264.720.1000k" ofType:@"mp4"]];
-    _videoUrl = [NSURL URLWithString:[[NSBundle mainBundle] pathForResource:@"h265.1080.1m" ofType:@"mp4"]];
+//    _videoUrl = [NSURL URLWithString:[[NSBundle mainBundle] pathForResource:@"h265.1080.1m" ofType:@"mp4"]];
 //    _videoUrl = [NSURL URLWithString:[[NSBundle mainBundle] pathForResource:@"h265.36.400k" ofType:@"mp4"]];
 //    _videoUrl = [NSURL URLWithString:[[NSBundle mainBundle] pathForResource:@"h265.720.750k" ofType:@"mp4"]];
+    _videoUrl = [NSURL URLWithString:[[NSBundle mainBundle] pathForResource:@"IMG_0185" ofType:@"MOV"]];
+//    _videoUrl = [NSURL URLWithString:@"http://maichang.kssws.ks-cdn.com/test4b.mov"];
+//    _videoUrl = [NSURL URLWithString:@"http://192.168.135.185/zhoucheng.mov"];
+//    _videoUrl = [NSURL URLWithString:@"http://115.231.96.89/testStream/zhoucheng.mov"];
+//    _videoUrl = [NSURL URLWithString:@"http://maichang.kssws.ks-cdn.com/upload20150716161913.mp4"];
+    
+    
+    
+    
     [self initPlayer];
     
     UIView *demoView = [(UIButton *)sender superview];

@@ -29,6 +29,7 @@
 		131EDE951B2EAD6F002930E3 /* KSYBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 131EDE941B2EAD6F002930E3 /* KSYBarView.m */; };
 		1327D3981ACD377F0042A834 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 1327D3971ACD377F0042A834 /* Reachability.m */; };
 		134F58A41B1D850800126D81 /* MediaVoiceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 134F58A31B1D850800126D81 /* MediaVoiceView.m */; };
+		1357A23C1B74AEA100F753FB /* IMG_0185.MOV in Resources */ = {isa = PBXBuildFile; fileRef = 1357A23B1B74AEA100F753FB /* IMG_0185.MOV */; };
 		13869D291AC3F4570083B670 /* MediaControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 13869D201AC3F4570083B670 /* MediaControlView.m */; };
 		13869D2A1AC3F4570083B670 /* MediaControlViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13869D221AC3F4570083B670 /* MediaControlViewController.m */; };
 		13869D2C1AC3F4570083B670 /* VideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13869D271AC3F4570083B670 /* VideoViewController.m */; };
@@ -93,6 +94,7 @@
 		1327D3971ACD377F0042A834 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		134F58A21B1D850800126D81 /* MediaVoiceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaVoiceView.h; sourceTree = "<group>"; };
 		134F58A31B1D850800126D81 /* MediaVoiceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaVoiceView.m; sourceTree = "<group>"; };
+		1357A23B1B74AEA100F753FB /* IMG_0185.MOV */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = IMG_0185.MOV; sourceTree = "<group>"; };
 		13869D1E1AC3F4570083B670 /* MediaControlDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaControlDefine.h; sourceTree = "<group>"; };
 		13869D1F1AC3F4570083B670 /* MediaControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaControlView.h; sourceTree = "<group>"; };
 		13869D201AC3F4570083B670 /* MediaControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaControlView.m; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 		0A68AA3B1ABBFAE2006CA2EF = {
 			isa = PBXGroup;
 			children = (
+				1357A23B1B74AEA100F753FB /* IMG_0185.MOV */,
 				13E586121B5F8FD20068F75F /* libstdc++.6.dylib */,
 				0A6DCA2B1AFCB9810026E5D6 /* KSYMediaPlayer */,
 				1327D3951ACD377F0042A834 /* Reachability */,
@@ -386,6 +389,7 @@
 				13F0AB2E1B15C13600BE9BBF /* green in Resources */,
 				13F0AB301B15C13600BE9BBF /* pink in Resources */,
 				130F72BF1B157473004B966B /* blue in Resources */,
+				1357A23C1B74AEA100F753FB /* IMG_0185.MOV in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
