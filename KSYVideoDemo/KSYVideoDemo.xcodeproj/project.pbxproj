@@ -29,7 +29,6 @@
 		131EDE951B2EAD6F002930E3 /* KSYBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 131EDE941B2EAD6F002930E3 /* KSYBarView.m */; };
 		1327D3981ACD377F0042A834 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 1327D3971ACD377F0042A834 /* Reachability.m */; };
 		134F58A41B1D850800126D81 /* MediaVoiceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 134F58A31B1D850800126D81 /* MediaVoiceView.m */; };
-		1357A23C1B74AEA100F753FB /* IMG_0185.MOV in Resources */ = {isa = PBXBuildFile; fileRef = 1357A23B1B74AEA100F753FB /* IMG_0185.MOV */; };
 		13869D291AC3F4570083B670 /* MediaControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 13869D201AC3F4570083B670 /* MediaControlView.m */; };
 		13869D2A1AC3F4570083B670 /* MediaControlViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13869D221AC3F4570083B670 /* MediaControlViewController.m */; };
 		13869D2C1AC3F4570083B670 /* VideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13869D271AC3F4570083B670 /* VideoViewController.m */; };
@@ -40,6 +39,7 @@
 		13F0AB2F1B15C13600BE9BBF /* orange in Resources */ = {isa = PBXBuildFile; fileRef = 13F0AB2B1B15C13600BE9BBF /* orange */; };
 		13F0AB301B15C13600BE9BBF /* pink in Resources */ = {isa = PBXBuildFile; fileRef = 13F0AB2C1B15C13600BE9BBF /* pink */; };
 		13F0AB311B15C13600BE9BBF /* red in Resources */ = {isa = PBXBuildFile; fileRef = 13F0AB2D1B15C13600BE9BBF /* red */; };
+		7CBE38B31B7B5847003AC1D9 /* a.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 7CBE38B21B7B5847003AC1D9 /* a.mp4 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,7 +94,6 @@
 		1327D3971ACD377F0042A834 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		134F58A21B1D850800126D81 /* MediaVoiceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaVoiceView.h; sourceTree = "<group>"; };
 		134F58A31B1D850800126D81 /* MediaVoiceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaVoiceView.m; sourceTree = "<group>"; };
-		1357A23B1B74AEA100F753FB /* IMG_0185.MOV */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = IMG_0185.MOV; sourceTree = "<group>"; };
 		13869D1E1AC3F4570083B670 /* MediaControlDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaControlDefine.h; sourceTree = "<group>"; };
 		13869D1F1AC3F4570083B670 /* MediaControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaControlView.h; sourceTree = "<group>"; };
 		13869D201AC3F4570083B670 /* MediaControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaControlView.m; sourceTree = "<group>"; };
@@ -109,6 +108,7 @@
 		13F0AB2B1B15C13600BE9BBF /* orange */ = {isa = PBXFileReference; lastKnownFileType = folder; path = orange; sourceTree = "<group>"; };
 		13F0AB2C1B15C13600BE9BBF /* pink */ = {isa = PBXFileReference; lastKnownFileType = folder; path = pink; sourceTree = "<group>"; };
 		13F0AB2D1B15C13600BE9BBF /* red */ = {isa = PBXFileReference; lastKnownFileType = folder; path = red; sourceTree = "<group>"; };
+		7CBE38B21B7B5847003AC1D9 /* a.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = a.mp4; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,7 +144,7 @@
 		0A68AA3B1ABBFAE2006CA2EF = {
 			isa = PBXGroup;
 			children = (
-				1357A23B1B74AEA100F753FB /* IMG_0185.MOV */,
+				7CBE38B21B7B5847003AC1D9 /* a.mp4 */,
 				13E586121B5F8FD20068F75F /* libstdc++.6.dylib */,
 				0A6DCA2B1AFCB9810026E5D6 /* KSYMediaPlayer */,
 				1327D3951ACD377F0042A834 /* Reachability */,
@@ -382,6 +382,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13F0AB2F1B15C13600BE9BBF /* orange in Resources */,
+				7CBE38B31B7B5847003AC1D9 /* a.mp4 in Resources */,
 				13F0AB311B15C13600BE9BBF /* red in Resources */,
 				13E5864B1B60BF550068F75F /* ipad-h265.720p.1Mbps@2x.png in Resources */,
 				130F72881B0F37F4004B966B /* Images.xcassets in Resources */,
@@ -389,7 +390,6 @@
 				13F0AB2E1B15C13600BE9BBF /* green in Resources */,
 				13F0AB301B15C13600BE9BBF /* pink in Resources */,
 				130F72BF1B157473004B966B /* blue in Resources */,
-				1357A23C1B74AEA100F753FB /* IMG_0185.MOV in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

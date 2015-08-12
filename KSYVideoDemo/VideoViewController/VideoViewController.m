@@ -153,20 +153,21 @@
 - (void)clickNativeBtn:(id)sender
 {
 //    NSString *strName = nativeField.text;
-//    _videoUrl = [NSURL URLWithString:[[NSBundle mainBundle] pathForResource:strName ofType:@"mp4"]];
+//    _videoUrl = [NSURL URLWithString:[[NSBundle mainBundle] pathForResource:@"a" ofType:@"mp4"]];
 //    _videoUrl = [NSURL URLWithString:[[NSBundle mainBundle] pathForResource:@"h264.1080.2m" ofType:@"mp4"]];
 //    _videoUrl = [NSURL URLWithString:[[NSBundle mainBundle] pathForResource:@"h264.360.500k" ofType:@"mp4"]];
 //    _videoUrl = [NSURL URLWithString:[[NSBundle mainBundle] pathForResource:@"h264.720.1000k" ofType:@"mp4"]];
 //    _videoUrl = [NSURL URLWithString:[[NSBundle mainBundle] pathForResource:@"h265.1080.1m" ofType:@"mp4"]];
 //    _videoUrl = [NSURL URLWithString:[[NSBundle mainBundle] pathForResource:@"h265.36.400k" ofType:@"mp4"]];
 //    _videoUrl = [NSURL URLWithString:[[NSBundle mainBundle] pathForResource:@"h265.720.750k" ofType:@"mp4"]];
-    _videoUrl = [NSURL URLWithString:[[NSBundle mainBundle] pathForResource:@"IMG_0185" ofType:@"MOV"]];
+//    _videoUrl = [NSURL URLWithString:[[NSBundle mainBundle] pathForResource:@"IMG_0185" ofType:@"MOV"]];
 //    _videoUrl = [NSURL URLWithString:@"http://maichang.kssws.ks-cdn.com/test4b.mov"];
 //    _videoUrl = [NSURL URLWithString:@"http://192.168.135.185/zhoucheng.mov"];
 //    _videoUrl = [NSURL URLWithString:@"http://115.231.96.89/testStream/zhoucheng.mov"];
 //    _videoUrl = [NSURL URLWithString:@"http://maichang.kssws.ks-cdn.com/upload20150716161913.mp4"];
     
-    
+    _videoUrl = [NSURL URLWithString:@"http://ceshi.kssws.ks-cdn.com/bb.mp4"];
+
     
     
     [self initPlayer];

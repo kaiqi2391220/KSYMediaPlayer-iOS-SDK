@@ -1352,6 +1352,7 @@ static int get_video_frame(FFPlayer *ffp, AVFrame *frame)
 
 static int audio_thread(void *arg)
 {
+    ALOGI("[%s:%d]Starting time = %lld\n", __FUNCTION__,__LINE__, av_gettime());
     FFPlayer *ffp = arg;
     VideoState *is = ffp->is;
     AVFrame *frame = av_frame_alloc();
@@ -1361,10 +1362,21 @@ static int audio_thread(void *arg)
     AVRational tb;
     int ret = 0;
 
+    int64_t start_decode_time = 0;
+    int64_t last_log_time = 0;
+
     if (!frame)
         return AVERROR(ENOMEM);
 
+    start_decode_time = av_gettime() ;
+    ALOGI("[%s:%d]Start decode time = %lld\n", __FUNCTION__,__LINE__, start_decode_time);
+
     do {
+	 if(last_log_time + 200000 <  av_gettime()){
+		last_log_time = av_gettime() ;
+    		ALOGI("[%s:%d]decoding. time = %lld\n", __FUNCTION__,__LINE__, last_log_time);
+	 }
+	 
         if ((got_frame = decoder_decode_frame(ffp, &is->auddec, frame, NULL)) < 0)
             goto the_end;
 
@@ -1405,7 +1417,16 @@ static int ffplay_video_decode_thread(void *arg)
     AVRational tb = is->video_st->time_base;
     AVRational frame_rate = av_guess_frame_rate(is->ic, is->video_st, NULL);
 
+    int64_t last_log_time = 0;
+    int64_t start_decode_time = av_gettime() ;
+    ALOGI("[%s:%d]Start decode time = %lld\n", __FUNCTION__,__LINE__, start_decode_time);
+
     for (;;) {
+	 if(last_log_time + 200000 <  av_gettime()){
+		last_log_time = av_gettime() ;
+    		ALOGI("[%s:%d]decoding. time = %lld\n", __FUNCTION__,__LINE__, last_log_time);
+	 }
+
         ret = get_video_frame(ffp, frame);
         if (ret < 0)
             goto the_end;
@@ -1427,6 +1448,7 @@ static int ffplay_video_decode_thread(void *arg)
 
 static int video_thread(void *arg)
 {
+    ALOGI("[%s:%d]Starting time = %lld\n", __FUNCTION__,__LINE__, av_gettime());
     FFPlayer *ffp = (FFPlayer *)arg;
     int       ret = 0;
 
@@ -1682,6 +1704,7 @@ static void sdl_audio_callback(void *opaque, Uint8 *stream, int len)
 
     ffp->audio_callback_time = av_gettime_relative();
 
+    ALOGI("[%s:%d] time = %lld, len=%d\n", __FUNCTION__,__LINE__, av_gettime(), len);
     while (len > 0) {
         if (is->audio_buf_index >= is->audio_buf_size) {
            audio_size = audio_decode_frame(ffp);
@@ -2151,6 +2174,7 @@ static int is_realtime(AVFormatContext *s)
 /* this thread gets the stream from the disk or the network */
 static int read_thread(void *arg)
 {
+    ALOGI("[%s:%d]Starting time = %lld\n", __FUNCTION__,__LINE__, av_gettime());
     FFPlayer *ffp = arg;
     VideoState *is = ffp->is;
     AVFormatContext *ic = NULL;
@@ -2169,6 +2193,8 @@ static int read_thread(void *arg)
     int last_error = 0;
     int64_t prev_io_tick_counter = 0;
     int64_t io_tick_counter = 0;
+    int64_t start_stream_time = 0;
+    int64_t last_log_time = 0;
 
     memset(st_index, -1, sizeof(st_index));
     is->last_video_stream = is->video_stream = -1;
@@ -2282,7 +2308,7 @@ static int read_thread(void *arg)
 
     is->realtime = is_realtime(ic);
 
-    if (false || ffp->show_status)
+    if (true || ffp->show_status)
         av_dump_format(ic, 0, is->filename, 0);
 
     int video_stream_count = 0;
@@ -2378,6 +2404,9 @@ static int read_thread(void *arg)
         ffp->auto_start = 0;
     }
 
+    start_stream_time = av_gettime() ;
+    ALOGI("[%s:%d]Start stream time = %lld\n", __FUNCTION__,__LINE__, start_stream_time);
+
     for (;;) {
         if (is->abort_request)
             break;
@@ -2387,7 +2416,8 @@ static int read_thread(void *arg)
                  (ic->pb && !strncmp(ffp->input_filename, "mmsh:", 5)))) {
             /* wait 10 ms to avoid trying to get another packet */
             /* XXX: horrible */
-            SDL_Delay(10);
+            ALOGE("is->paused: eof:%d (error=%d) paused:%d req:%d step:%d\n", eof, ffp->error, is->paused, is->pause_req, is->step);
+            SDL_Delay(20);
             continue;
         }
 #endif
@@ -2457,6 +2487,7 @@ static int read_thread(void *arg)
             is->queue_attachments_req = 0;
         }
 
+        ffp->infinite_buffer = 1;
         /* if the queue are full, no need to read more */
         if (ffp->infinite_buffer<1 && !is->seek_req &&
               (is->audioq.size + is->videoq.size > ffp->max_buffer_size
@@ -2468,12 +2499,8 @@ static int read_thread(void *arg)
                 if(is->paused && !ffp->auto_start) {
                     is->pause_req = 1;
                 }
-                int step = is->step;
-                is->step = 0;
                 ffp_toggle_buffering(ffp, 0);
                 is->pause_req = 0;
-                is->step = step;
-                SDL_Delay(1);
             }
             /* wait 10 ms */
             SDL_LockMutex(wait_mutex);
@@ -2504,7 +2531,7 @@ static int read_thread(void *arg)
                     ffp->auto_start = 0;
 
                     // TODO: 0 it's a bit early to notify complete here
-//                    ALOGE("ffp_toggle_buffering: completed: (error=%d) paused:%d req:%d step:%d\n", ffp->error, is->paused, is->pause_req, is->step);
+                    ALOGE("ffp_toggle_buffering: completed: eof:%d (error=%d) paused:%d req:%d step:%d\n", eof, ffp->error, is->paused, is->pause_req, is->step);
                     ffp_toggle_buffering(ffp, 0);
                     toggle_pause(ffp, 1);
                     //ALOGE("ffp_toggle_buffering: completed end paused:%d req:%d step:%d\n",  is->paused, is->pause_req, is->step);
@@ -2524,6 +2551,7 @@ static int read_thread(void *arg)
                     packet_queue_put_nullpacket(&is->videoq, is->video_stream);
                 if (is->audio_stream >= 0)
                     packet_queue_put_nullpacket(&is->audioq, is->audio_stream);
+                ALOGE("av_read_frame: read eof: eof:%d (error=%d) paused:%d req:%d step:%d\n", eof, ffp->error, is->paused, is->pause_req, is->step);
                 eof = 1;
             }
             if (ic->pb && ic->pb->error) {
@@ -2531,6 +2559,7 @@ static int read_thread(void *arg)
                     packet_queue_put_nullpacket(&is->videoq, is->video_stream);
                 if (is->audio_stream >= 0)
                     packet_queue_put_nullpacket(&is->audioq, is->audio_stream);
+               ALOGE("av_read_frame: read error: eof:%d (error=%d) paused:%d req:%d step:%d\n", eof, ffp->error, is->paused, is->pause_req, is->step);
                 eof = 1;
                 ffp->error = ic->pb->error;
                 ALOGE("av_read_frame error: %x(%c,%c,%c,%c)\n", ffp->error,
@@ -2562,6 +2591,12 @@ static int read_thread(void *arg)
         } else {
             eof = 0;
         }
+
+	 if(last_log_time + 200000 <  av_gettime()){
+		last_log_time = av_gettime_relative() ;
+    		ALOGI("[%s:%d]downloading. time = %lld index=%d pts=%lld\n", __FUNCTION__,__LINE__, last_log_time,pkt->stream_index,pkt->pts);
+	 }
+	 
         /* check if packet is in play range specified by user, then queue, otherwise discard */
         stream_start_time = ic->streams[pkt->stream_index]->start_time;
         pkt_in_play_range = ffp->duration == AV_NOPTS_VALUE ||
@@ -2797,7 +2832,7 @@ void ffp_global_init()
 //    } else {
 //        av_log_set_callback(ffp_log_callback_brief);
 //    }
-    av_drm_register(get_drm_key,decode_drm);
+    av_drm_register(get_drm_key,decode_drm,NULL);
 
     av_init_packet(&flush_pkt);
     flush_pkt.data = (uint8_t *)&flush_pkt;
@@ -3075,6 +3110,31 @@ int ffp_seek_to_l(FFPlayer *ffp, long msec)
     return 0;
 }
 
+long get_current_position_l(VideoState *is)
+{
+    int64_t start_time = is->ic->start_time;
+    int64_t start_diff = 0;
+    if (start_time > 0 && start_time != AV_NOPTS_VALUE)
+        start_diff = fftime_to_milliseconds(start_time);
+
+    int64_t pos = 0;
+    double pos_clock = get_master_clock(is);
+    if (isnan(pos_clock)) {
+        // ALOGE("pos = seek_pos: %d\n", (int)is->seek_pos);
+        pos = fftime_to_milliseconds(is->seek_pos);
+    } else {
+        // ALOGE("pos = pos_clock: %f\n", pos_clock);
+        pos = pos_clock * 1000;
+    }
+
+    if (pos < 0 || pos < start_diff)
+        return 0;
+
+    int64_t adjust_pos = pos - start_diff;
+    // ALOGE("pos=%ld\n", (long)adjust_pos);
+    return (long)adjust_pos;
+}
+
 long ffp_get_current_position_l(FFPlayer *ffp)
 {
     assert(ffp);
@@ -3316,11 +3376,8 @@ void ffp_check_buffering_l(FFPlayer *ffp)
 //            ALOGE("ffp_check_buffering_l, paused:%d req:%d step:%d",is->paused,is->pause_req,is->step);
             if(is->paused && !ffp->auto_start)
                 is->pause_req = 1;
-            int step = is->step;
-            is->step = 0;
             ffp_toggle_buffering(ffp, 0);
             is->pause_req = 0;
-            is->step = step;
         }
     }
 }

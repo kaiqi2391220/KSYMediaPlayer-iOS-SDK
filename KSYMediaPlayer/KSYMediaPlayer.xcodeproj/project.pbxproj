@@ -87,7 +87,6 @@
 		0AF637951AF8B69300AB6C2F /* DRMURLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF637941AF8B69300AB6C2F /* DRMURLManager.m */; };
 		0AFAB0FB1ADCE9DE00218184 /* KSY_Aes.c in Sources */ = {isa = PBXBuildFile; fileRef = 0AFAB0F71ADCE9DE00218184 /* KSY_Aes.c */; };
 		0AFAB0FC1ADCE9DE00218184 /* KSY_Drm.c in Sources */ = {isa = PBXBuildFile; fileRef = 0AFAB0F91ADCE9DE00218184 /* KSY_Drm.c */; };
-		13E586111B5F8F9A0068F75F /* libqydecoder.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 13E586101B5F8F9A0068F75F /* libqydecoder.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -340,7 +339,6 @@
 		0AFAB0F81ADCE9DE00218184 /* KSY_Aes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSY_Aes.h; sourceTree = "<group>"; };
 		0AFAB0F91ADCE9DE00218184 /* KSY_Drm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = KSY_Drm.c; sourceTree = "<group>"; };
 		0AFAB0FA1ADCE9DE00218184 /* KSY_Drm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSY_Drm.h; sourceTree = "<group>"; };
-		13E586101B5F8F9A0068F75F /* libqydecoder.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libqydecoder.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -352,7 +350,6 @@
 				0A639CB11B097F5D00E2287A /* libavutil.a in Frameworks */,
 				0A639CB31B097F5D00E2287A /* libswresample.a in Frameworks */,
 				0A639CAF1B097F5D00E2287A /* libavcodec.a in Frameworks */,
-				13E586111B5F8F9A0068F75F /* libqydecoder.a in Frameworks */,
 				0A639CB21B097F5D00E2287A /* librtmp.a in Frameworks */,
 				0A639CB01B097F5D00E2287A /* libavformat.a in Frameworks */,
 			);
@@ -512,7 +509,6 @@
 		0A639CA81B097F5D00E2287A /* lib */ = {
 			isa = PBXGroup;
 			children = (
-				13E586101B5F8F9A0068F75F /* libqydecoder.a */,
 				0A639CA91B097F5D00E2287A /* libavcodec.a */,
 				0A639CAA1B097F5D00E2287A /* libavformat.a */,
 				0A639CAB1B097F5D00E2287A /* libavutil.a */,

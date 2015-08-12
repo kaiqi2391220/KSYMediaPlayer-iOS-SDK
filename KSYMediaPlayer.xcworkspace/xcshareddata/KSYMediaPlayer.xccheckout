@@ -30,9 +30,9 @@
 		<key>581B987F5BBCB7853D442F51CF8AF61485EEF971</key>
 		<string>../../ksymediaplayer-v2</string>
 		<key>6AA68591624CE172FDFFCF3C19FD7914B4BA5D2F</key>
-		<string>../../KSYMediaPlayer-IOS</string>
+		<string>..-IOS</string>
 		<key>9DDEA5592D1A63CC535A0EB5ECCEC4FFC5C5D208</key>
-		<string>../../KSYMediaPlayer-IOS.git</string>
+		<string>..-IOS.git</string>
 		<key>9FC6F2500D57B12382987DC5D2D9159B64A79795</key>
 		<string>../../ksymediaplayer-v1</string>
 	</dict>

@@ -56,7 +56,7 @@
  */
 
 #define LIBAVUTIL_VERSION_MAJOR  54
-#define LIBAVUTIL_VERSION_MINOR  19
+#define LIBAVUTIL_VERSION_MINOR  28
 #define LIBAVUTIL_VERSION_MICRO 100
 
 #define LIBAVUTIL_VERSION_INT   AV_VERSION_INT(LIBAVUTIL_VERSION_MAJOR, \
@@ -67,7 +67,7 @@
                                            LIBAVUTIL_VERSION_MICRO)
 #define LIBAVUTIL_BUILD         LIBAVUTIL_VERSION_INT
 
-#define LIBAVUTIL_IDENT         "KSYun"
+#define LIBAVUTIL_IDENT         "KSYUN"
 
 /**
  * @}
@@ -118,6 +118,9 @@
 #endif
 #ifndef FF_API_OPT_TYPE_METADATA
 #define FF_API_OPT_TYPE_METADATA        (LIBAVUTIL_VERSION_MAJOR < 55)
+#endif
+#ifndef FF_API_DLOG
+#define FF_API_DLOG                     (LIBAVUTIL_VERSION_MAJOR < 55)
 #endif
 
 #ifndef FF_CONST_AVUTIL55

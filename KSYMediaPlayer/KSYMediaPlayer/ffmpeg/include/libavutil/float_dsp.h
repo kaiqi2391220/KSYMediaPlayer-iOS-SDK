@@ -19,12 +19,15 @@
 #ifndef AVUTIL_FLOAT_DSP_H
 #define AVUTIL_FLOAT_DSP_H
 
-//#include "config.h"
+#ifdef FFMPEG_CONF
+#include "config.h"
+#else
 #define av_restrict restrict
+#endif
 
 typedef struct AVFloatDSPContext {
     /**
-     * Calculate the product of two vectors of floats and store the result in
+     * Calculate the entry wise product of two vectors of floats and store the result in
      * a vector of floats.
      *
      * @param dst  output vector
@@ -105,7 +108,7 @@ typedef struct AVFloatDSPContext {
                                const float *src1, const float *win, int len);
 
     /**
-     * Calculate the product of two vectors of floats, add a third vector of
+     * Calculate the entry wise product of two vectors of floats, add a third vector of
      * floats and store the result in a vector of floats.
      *
      * @param dst  output vector
@@ -123,7 +126,7 @@ typedef struct AVFloatDSPContext {
                             const float *src2, int len);
 
     /**
-     * Calculate the product of two vectors of floats, and store the result
+     * Calculate the entry wise product of two vectors of floats, and store the result
      * in a vector of floats. The second vector of floats is iterated over
      * in reverse order.
      *

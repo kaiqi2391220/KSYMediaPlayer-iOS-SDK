@@ -38,7 +38,7 @@
                                            LIBSWSCALE_VERSION_MICRO)
 #define LIBSWSCALE_BUILD        LIBSWSCALE_VERSION_INT
 
-#define LIBSWSCALE_IDENT        "KSYun"
+#define LIBSWSCALE_IDENT        "KSYUN"
 
 /**
  * FF_API_* defines may be placed below to indicate public API that will be
